@@ -20,7 +20,7 @@ def main():
     # Store a list of published lesson (id, name)
     # attributes in a tuple in the order above.
     #
-    lessons = [(lesson._id, lesson.name) for lesson in store.values() if not lesson.published]
+    lessons = [(lesson._id, lesson.name) for lesson in store.values() if lesson.published]
     store.close()
 
     # Interface
