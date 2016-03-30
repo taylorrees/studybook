@@ -7,7 +7,9 @@ def main():
     """
     Display the take lesson view.
     This view displays a list of
-    available lessons.
+    published lessons.
+
+    @return {void}
     """
 
     row = 0

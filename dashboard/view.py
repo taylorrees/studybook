@@ -4,6 +4,12 @@ import lesson_list.view as lesson_list_view
 import lesson_create.view as lesson_create_view
 
 def main():
+
+    # Quick and dirty dashboard.
+    # Needs work once all views are
+    # in place.
+    #
+    
     row = 0
     window = tk.Tk()
     window.title('Studybook | Dashboard')
