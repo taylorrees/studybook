@@ -1,3 +1,5 @@
+# Author: Taylor Rees
+
 import tkinter as tk
 import templates.ui as ui
 import lesson.view as lesson_view

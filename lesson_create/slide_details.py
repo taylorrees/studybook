@@ -1,6 +1,15 @@
+# Author: Taylor Rees
+
 import tkinter as tk
 
 class SlideDetails:
+    """
+    This class is responsible for
+    displaying the slide details section
+    in the create lesson form. It handles
+    actions that relate specifically to the
+    creation of lesson slides.
+    """
 
     def __init__(self, root, lesson):
         """

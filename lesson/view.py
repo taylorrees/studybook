@@ -1,8 +1,15 @@
+# Author: Taylor Rees
+
 import tkinter as tk
 import templates.ui as ui
 import shelve
 
 class LessonView:
+    """
+    This class is responsible for loading
+    lesson data and displaying this data
+    in a graphical interface.
+    """
     def __init__(self, root, lesson):
         self.root = root
         self.lesson = lesson

@@ -1,3 +1,5 @@
+# Authors: Taylor Rees
+
 import tkinter as tk
 
 padx = 80

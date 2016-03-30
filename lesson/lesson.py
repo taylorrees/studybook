@@ -1,3 +1,5 @@
+# Author: Taylor Rees
+
 from lesson.slide import Slide
 import shelve
 

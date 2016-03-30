@@ -1,3 +1,5 @@
+# Author: Taylor Rees
+
 class LessonStatus(object):
     """
     This class is responsible for the

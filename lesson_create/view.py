@@ -1,8 +1,15 @@
+# Author: Taylor Rees
+
 import tkinter as tk
 from lesson.lesson import Lesson
 from lesson_create.slide_details import SlideDetails
 
 class LessonCreate:
+    """
+    This class is responsible for providing
+    a GUI through which a user can create a
+    lesson.
+    """
 
     def __init__(self, root):
         """

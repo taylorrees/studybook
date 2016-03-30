@@ -1,3 +1,5 @@
+# Author: Taylor Rees
+
 class Slide(object):
     """
     This class is responsible for the
