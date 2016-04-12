@@ -11,8 +11,3 @@ class Question:
 		self.detail = detail
 		self.answers = answers
 
-	def get(self):
-		"""
-		returns the question
-		"""
-

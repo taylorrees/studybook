@@ -13,6 +13,7 @@ class Test:
 		self._id = testID
 		self.questions = []
 		self.students = []
+		self.results = {}
 		self.QI = 0
 
 	def getStatus(self, studentID):
@@ -25,17 +26,19 @@ class Test:
 		else:
 			return False
 
-	def setResult(self):
+	def setResult(self, studentID, mark):
 		"""
 		this method sets the result of a completed
 		test.
 		"""
+		self.results[studentID] = mark
 
-	def getResult(self):
+	def getResult(self, studentID):
 		"""
 		this method returns the result of a previously
 		completed test.
 		"""
+		return self.results[studentID]
 
 	def takeTest(self):
 		"""
@@ -57,16 +60,3 @@ class Test:
 		"""
 		del self.questions[QID]
 		self.QI -= 1
-
-	def store(self):
-	#checking for store file.
-		try:
-			#try to open file.
-			store = shelve.open('test/store', 'w')
-		except Exception:
-			#create a new one if non-existant.
-			store = shelve.open('test/store', 'n')
-
-	#storing test.
-	store[self._id] = self
-	store.close()
