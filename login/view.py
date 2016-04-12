@@ -44,7 +44,7 @@ class Login:
 
         tk.Label(self.root, text='Password').grid(row=row)
         row += 1
-        self.password = tk.Entry(self.root)
+        self.password = tk.Entry(self.root, show="*")
         self.password.grid(row=row)
         row += 1
 
