@@ -41,7 +41,7 @@ class User:
 			rdr = csv.reader(csvfile)
 			for row in rdr:
 				if (user_id == row[0] and password == row[1]):
-					self.login_status = row[2]
+					self.login_status = int(row[2])
 
 
 
