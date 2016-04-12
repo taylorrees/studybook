@@ -1,4 +1,5 @@
 # Author: Tom Wynne-Owen
+import csv
 
 class User:
 
@@ -27,13 +28,22 @@ class User:
 		*										*
 		* LOGIN DETAILS HARD CODED TO PROTOTYPE *
 		*										*
-		"""
+		
 
 		if (user_id == "lecturer" and password == "password"):
 			self.login_status = 1
 
 		elif (user_id == "student" and password == "password"):
 			self.login_status = 2
+
+		"""
+		with open('users.csv') as csvfile:
+			rdr = csv.reader(csvfile)
+			for row in rdr:
+				if (user_id == row[0] and password == row[1]):
+					self.login_status = row[2]
+
+
 
 
 	def logout(self):
