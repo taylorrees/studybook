@@ -1,3 +1,5 @@
+# Author: Wiliam Goalie Thomas
+
 import tkinter as tk
 import templates.ui as ui
 import dashboard.view as dashboard

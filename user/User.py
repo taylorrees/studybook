@@ -1,3 +1,5 @@
+# Author: Tom Wynne-Owen
+
 class User:
 
 	def __init__(self):
