@@ -3,7 +3,7 @@
 import tkinter as tk
 import templates.ui as ui
 import dashboard.view as dashboard
-from user.User import User
+from user.user import User
 
 class Login:
 
