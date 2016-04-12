@@ -1,6 +1,6 @@
 class User:
 
-	def __init__(self, user_id, password, login_status = 0):
+	def __init__(self):
 		"""
 		Constructor
 		This class is responsible for creating a user class
@@ -15,9 +15,7 @@ class User:
 
 		"""
 
-		self.user_id = user_id
-		self.password = password
-		self.login_status = login_status
+		self.login_status = 0
 
 
 	def login(self, user_id, password):
@@ -33,12 +31,10 @@ class User:
 		"""
 
 		if (user_id == "lecturer" and password == "password"):
-			login_status = 1
-			return login_status
+			self.login_status = 1
 
 		elif (user_id == "student" and password == "password"):
-			login_status = 2
-			return login_status
+			self.login_status = 2
 
 
 	def logout(self):
