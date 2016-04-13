@@ -20,14 +20,14 @@ class Login:
 
         if login_status == 1:
             self.window.destroy()
-            dashboard.main(login_status)
+            dashboard.main(self.user.user_id, login_status)
 
         if login_status == 2:
             self.window.destroy()
-            dashboard.main(login_status)
+            dashboard.main(self.user.user_id, login_status)
 
 
-    def build(self, ):
+    def build(self):
         row = 0
         user = User()
 

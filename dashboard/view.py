@@ -8,9 +8,10 @@ from user.user import User
 
 class Dashboard:
 
-    def __init__(self, root, window, login_status):
+    def __init__(self, root, window, user_id, login_status):
         self.root = root
         self.window = window
+        self.user_id = user_id
         self.login_status = login_status
         self.build()
 
@@ -40,6 +41,11 @@ class Dashboard:
         ui.margin_y(self.root, px=10, row=row)
         row += 1
 
+        tk.Label(self.root, text="User: " + self.user_id).grid(row=row)
+        row += 1
+        ui.margin_y(self.root, px=10, row=row)
+        row += 1
+
         # If a lecturer is logged in
         # show them the lecturer specific actions
         if self.login_status == 1:
@@ -56,12 +62,12 @@ class Dashboard:
         row += 1
 
 
-def main(login_status):
+def main(user_id, login_status):
     window = tk.Tk()
     window.title('Studybook | Dashboard')
     centered_frame = tk.Frame(window)
 
-    app = Dashboard(centered_frame, window, login_status)
+    app = Dashboard(centered_frame, window, user_id, login_status)
 
     centered_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
     window.geometry(ui.center(window))

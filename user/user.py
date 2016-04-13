@@ -17,6 +17,7 @@ class User:
 		"""
 
 		self.login_status = 0
+		self.user_id = ''
 
 
 	def login(self, user_id, password):
@@ -28,7 +29,7 @@ class User:
 		*										*
 		* LOGIN DETAILS HARD CODED TO PROTOTYPE *
 		*										*
-		
+
 
 		if (user_id == "lecturer" and password == "password"):
 			self.login_status = 1
@@ -41,6 +42,7 @@ class User:
 			rdr = csv.reader(csvfile)
 			for row in rdr:
 				if (user_id == row[0] and password == row[1]):
+					self.user_id = user_id
 					self.login_status = int(row[2])
 
 
