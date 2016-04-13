@@ -40,6 +40,13 @@ class Lesson(object):
         del self.slides[slide_number]
 
 
+    def publish(self):
+        """
+        Set the published attribute to True.
+        """
+
+        self.published = True
+
     def has_test(self):
         """
         Determines whether the lesson has

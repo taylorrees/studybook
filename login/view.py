@@ -7,8 +7,9 @@ from user.user import User
 
 class Login:
 
-    def __init__(self, root):
+    def __init__(self, root, window):
         self.root = root
+        self.window = window
         self.user = User()
         self.build()
 
@@ -18,11 +19,11 @@ class Login:
         login_status = self.user.login_status
 
         if login_status == 1:
-            self.root.destroy()
+            self.window.destroy()
             dashboard.main(login_status)
 
         if login_status == 2:
-            self.root.destroy()
+            self.window.destroy()
             dashboard.main(login_status)
 
 
@@ -62,5 +63,10 @@ class Login:
 def main():
     window = tk.Tk()
     window.title('Studybook | Login')
-    app = Login(window)
+    centered_frame = tk.Frame(window)
+
+    app = Login(centered_frame, window)
+
+    centered_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+    window.geometry(ui.center(window))
     window.mainloop()
