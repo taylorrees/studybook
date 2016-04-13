@@ -62,19 +62,22 @@ class User:
 		Returns False if user already exists.
 		"""
         
-        #read and check if user_id exists
+       		#read and check if user_id exists
 		with open('users.csv', 'r') as csvfile:
 			rdr = csv.reader(csvfile)
 			for row in rdr:
 				if (user_id == row[0]):
 					#user_id exists in the file so return false
 					return False
+
 		csvfile.close()
         
 		#add user_id, password and permission status to file
-		with open('users.csv', 'a') as csvfile:
-			new_user =  "\n" + user_id + "," + password + "," + permission
+		with open('users.csv', 'a', newline='') as csvfile:
 			writer = csv.writer(csvfile, delimiter=',')
-			csvfile.write(new_user)
+			new_user = [[user_id, password, permission]]
+		
+			writer.writerows(new_user)
 		csvfile.close()
 		return True
+
