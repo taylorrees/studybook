@@ -3,6 +3,7 @@ import templates.ui as ui
 import lesson_list.view as lesson_list_view
 import lesson_publish.view as lesson_publish_view
 import lesson_create.view as lesson_create_view
+import user.view as add_user_view
 import login
 from user.user import User
 
@@ -52,6 +53,8 @@ class Dashboard:
             tk.Button(self.root, text='Create Lesson', command=lesson_create_view.main).grid(row=row)
             row += 1
             tk.Button(self.root, text='Publish Lessons', command=lesson_publish_view.main).grid(row=row)
+            row += 1
+            tk.Button(self.root, text='Add User', command=add_user_view.main).grid(row=row)
             row += 1
 
         tk.Button(self.root, text='View Lessons', command=lesson_list_view.main).grid(row=row)
