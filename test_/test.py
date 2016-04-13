@@ -14,7 +14,6 @@ class Test:
 		self.questions = []
 		self.students = []
 		self.results = {}
-		self.QI = 0
 
 	def getStatus(self, studentID):
 		"""
@@ -47,16 +46,21 @@ class Test:
 		"""
 
 
-	def add(self, Question):
+	def add(self, detail, answers):
 		"""
 		this method adds a question to the test.
 		"""
-		self.questions.append(Question)
-		self.QI += 1
+		self.questions.append((detail, answers))
 
-	def remove(self, QID):
-		"""
-		this method removes the question from the test.
-		"""
-		del self.questions[QID]
-		self.QI -= 1
+	def store(self):
+
+		print('store: '+ str(self.questions))
+		print('ID: ' + str(self._id))
+
+		try:
+			store = shelve.open('test_/store', 'w')
+		except Exception:
+			store = shelve.open('test_/store', 'n')
+
+		store[self._id] = self
+		store.close()

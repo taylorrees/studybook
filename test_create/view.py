@@ -1,7 +1,6 @@
 #Author: Thomas Sweetman
 
 import tkinter as tk
-from test_.Question import Question
 from test_.test import Test
 from lesson.lesson import Lesson
 import shelve
@@ -35,8 +34,10 @@ class TestView:
 
 		self._id2 = self._id.get()
 
-		for q in self.questions:
-			self.test.add(q)
+		print('save: ' + str(self.questions))
+
+		for d, a in self.questions:
+			self.test.add(d, a)
 
 		newlist = [seq[0] for seq in lessons]
 
@@ -50,23 +51,28 @@ class TestView:
 		self.lesson = store[self._id2]
 		store.close()
 
-		self.lesson.test = self.test
+		self.lesson.test = True
+		self.test._id = self._id2
 
-		print(self.lesson)
-
-		#self.lesson.store()
-
-		store = shelve.open('lesson/store', 'w')
-		store[self._id2] = self.lesson
-		store.close()
-		
+		self.test.store()
+		self.lesson.store()
 		self.root.destroy()
 
-	def add(self, question, Test_description):
+	def add(self, Test_description):
 		"""
 		this method adds a question to the test.
 		"""
-		self.questions.append(question)
+		self.answer2 = [0,0,0,0]
+		self.detail2 = 'not writen'
+		self.detail2 = self.description.get()
+		self.answer2[0] = self.answer[0].get()
+		self.answer2[1] = self.answer[1].get()
+		self.answer2[2] = self.answer[2].get()
+		self.answer2[3] = self.answer[3].get()
+		print('hello?: ' + str(self.description.get()))
+		print(str(self.detail2) + str(self.answer2))
+
+		self.questions.append((self.detail2, self.answer2))
 		self.QI += 1
 		self.detail()
 		Test_description.destroy()
@@ -79,9 +85,9 @@ class TestView:
 		descBox = tk.Label(Test_description, text='question ' + str(self.QI + 1) + ':')
 		descBox.grid(sticky=tk.W)
 
-		desc = tk.Text(Test_description, height=2,width=50)
-		desc.grid(sticky=tk.W)
+		self.description = tk.Text(Test_description, height=2,width=50)
 		self.description = tk.Entry(Test_description)
+		self.description.grid(sticky=tk.W)
 
 		#answer
 		answerBox = tk.Label(Test_description, text='Correct Answer')
@@ -97,11 +103,9 @@ class TestView:
 		self.answer[3] = tk.Entry(Test_description)
 		self.answer[3].grid(sticky=tk.W)
 
-		question = Question(self.QI, self.description, self.answer)
-
 		tk.Button(Test_description, text='Publish & Close', command=lambda: self.save(published=True)).grid(padx=40, sticky=tk.W)
 		tk.Button(Test_description, text='Save & Close', command=lambda: self.save()).grid(padx=40, sticky=tk.W)
-		tk.Button(Test_description, text='add question', command=lambda: self.add(question, Test_description)).grid(padx=40, sticky=tk.W)
+		tk.Button(Test_description, text='add question', command=lambda: self.add( Test_description)).grid(padx=40, sticky=tk.W)
 		tk.Button(Test_description, text='Close', command=self.root.destroy).grid(padx=40, sticky=tk.W)
 		tk.Label(Test_description).grid()
 
