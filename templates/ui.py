@@ -5,7 +5,7 @@ import tkinter as tk
 padx = 80
 font_family = "Arial"
 
-def title(master, text, row):
+def title(master, text, row, padx=padx):
     """
     Creates a standardised page title for
     a screen within the application.

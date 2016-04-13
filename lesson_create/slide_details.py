@@ -22,12 +22,15 @@ class SlideDetails:
          -------------------
         |  ---------------  |
         | | title         | |
+        | | image         | |
         | | body          | |
         | |           add | |
         |  ---------------  |
          -------------------
 
         Important: Requires grid layout.
+        Important: Images stored in /lesson/img/
+                   in .gif format
 
         @param {tkinter object} root
         @param {lesson object} lesson
@@ -40,6 +43,7 @@ class SlideDetails:
         self.outer_frame = tk.Frame(self.root, bd=1, relief=tk.SOLID)
         self.inner_frame = tk.Frame(self.outer_frame)
         self.title = tk.Entry(self.inner_frame)
+        self.image = tk.Entry(self.inner_frame)
         self.body = tk.Text(self.inner_frame, height=16, width=50, bd=1, relief=tk.SOLID, wrap='word')
         self.add_button = tk.Button(self.inner_frame, text='Add Slide', command=self.add)
 
@@ -55,6 +59,7 @@ class SlideDetails:
         """
 
         self.title.delete(0, 'end')
+        self.image.delete(0, 'end')
         self.body.delete('1.0', 'end')
 
 
@@ -68,7 +73,7 @@ class SlideDetails:
         @return {void}
         """
 
-        self.slides.append({'_id': self.title.get(), 'name': self.body.get('1.0', tk.END)})
+        self.slides.append({'_id': self.title.get(), 'name': self.body.get('1.0', tk.END), 'image':self.image.get()})
         self.clear()
 
 
@@ -101,6 +106,13 @@ class SlideDetails:
         # slide title
         tk.Label(self.inner_frame, text='Title').grid(sticky=tk.W)
         self.title.grid(sticky=tk.W)
+
+        # slide image
+        tk.Label(self.inner_frame, text='Image Path').grid(sticky=tk.W)
+        tk.Label(self.inner_frame,
+                 text='Images should be stored in .gif file format within the /lesson/images/ folder.',
+                 font=('Arial', 9)).grid(sticky=tk.W)
+        self.image.grid(sticky=tk.W)
 
         # slide body
         tk.Label(self.inner_frame, text='Body').grid(sticky=tk.W)

@@ -21,6 +21,9 @@ class LessonView:
         self.previous_button = tk.Button(self.root, text="Previous Slide", command=self.previous)
         self.next_button = tk.Button(self.root, text="Next Slide", command=self.next)
         self.complete_button = tk.Button(self.root, text="Finish Lesson", command=self.complete)
+        self.img = tk.PhotoImage(file="")
+        self.img_label = tk.Label(self.root, image="")
+
 
         self.build()
 
@@ -43,9 +46,23 @@ class LessonView:
         # remove current slide title & body
         self.title.destroy()
         self.body.destroy()
+        self.img_label.destroy()
         # set new title & body
-        self.title = ui.title(self.root, text=slide.title, row=1)
-        self.body = tk.Label(self.root, text=slide.body)
+        self.title = ui.title(self.root, text=slide.title, row=1, padx=20)
+
+        self.body = tk.Text(self.root, width=55)
+        self.body.insert(tk.END, slide.body)
+        self.body.configure(state=tk.DISABLED, wrap=tk.WORD, font=('Arial', 14))
+
+        # image
+        if slide.image != '':
+            self.body.grid(row=3, column=0)
+            self.img = tk.PhotoImage(file="lesson/images/" + slide.image)
+            self.img_label = tk.Label(self.root, image=self.img)
+            self.img_label.grid(row=3, column=1)
+        else:
+            self.body.grid(row=3, column=0)
+
         # rebuild interface
         self.build()
 
@@ -68,9 +85,23 @@ class LessonView:
         # remove current slide title & body
         self.title.destroy()
         self.body.destroy()
+        self.img_label.destroy()
         # set new title & body
-        self.title = ui.title(self.root, text=slide.title, row=1)
-        self.body = tk.Label(self.root, text=slide.body)
+        self.title = ui.title(self.root, text=slide.title, row=1, padx=20)
+
+        self.body = tk.Text(self.root, width=55)
+        self.body.insert(tk.END, slide.body)
+        self.body.configure(state=tk.DISABLED, wrap=tk.WORD, font=('Arial', 14))
+
+        # image
+        if slide.image != '':
+            self.body.grid(row=3, column=0)
+            self.img = tk.PhotoImage(file="lesson/images/" + slide.image)
+            self.img_label = tk.Label(self.root, image=self.img)
+            self.img_label.grid(row=3, column=1)
+        else:
+            self.body.grid(row=3, column=0)
+
         # rebuild interface
         self.build()
 
@@ -110,7 +141,8 @@ class LessonView:
 
         @return {void}
         """
-        self.body.grid(row=3)
+
+        self.body.grid(row=3, padx=20)
 
 
     # Navigation
@@ -177,7 +209,7 @@ def main(_id):
     lesson = store[_id]
     store.close()
 
-    window = tk.Tk()
+    window = tk.Toplevel()
     window.title("Studybook | Lesson Viewer")
     app = LessonView(window, lesson)
     window.mainloop()
