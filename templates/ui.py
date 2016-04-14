@@ -1,11 +1,11 @@
-# Authors: Taylor Rees
+# Author: Taylor Rees
 
 import tkinter as tk
 
 padx = 80
 font_family = "Arial"
 
-def title(master, text, row):
+def title(master, text, row, padx=padx):
     """
     Creates a standardised page title for
     a screen within the application.
@@ -62,3 +62,21 @@ def margin_y(master, row, px):
 
     label = tk.Label(master)
     label.grid(row=row, pady=px)
+
+
+def center(window):
+    """
+    Create a default sized window and center that
+    window to the screen.
+    """
+
+    w = 800
+    h = 650
+    # Find screen width and height
+    ws = window.winfo_screenwidth()
+    hs = window.winfo_screenheight()
+    # Calculate x and y coordinates for the Tk window
+    x = (ws/2) - (w/2)
+    y = (hs/2) - (h/2)
+    
+    return '%dx%d+%d+%d' % (w, h, x, y)

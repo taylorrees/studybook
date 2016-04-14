@@ -1,4 +1,3 @@
-import dashboard.view as dashboard
+import login.view as login
 
-# run the dashboard
-dashboard.main()
+login.main()

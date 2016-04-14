@@ -63,7 +63,7 @@ class LessonCreate:
         # slide details section of the form
         #
         for slide in slides:
-            self.lesson.add(slide['_id'], slide['name'])
+            self.lesson.add(slide['_id'], slide['name'], slide['image'])
 
         # Store the lesson object in the
         # persistent lesson store
