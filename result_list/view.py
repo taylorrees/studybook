@@ -9,7 +9,7 @@ def main():
 
     row = 0
     window = tk.Tk()
-    window.title("Studybook | Test List")
+    window.title("Studybook | Results List")
     centered_frame = tk.Frame(window)
 
     store = shelve.open('lesson/store')
@@ -19,7 +19,7 @@ def main():
     ui.margin_y(centered_frame, px=20, row=row)
     row += 1
 
-    ui.title(centered_frame, text="Test List", row=row)
+    ui.title(centered_frame, text="Results List", row=row)
     row += 1
 
     ui.margin_y(centered_frame, px=2, row=row)
