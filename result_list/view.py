@@ -2,10 +2,10 @@
 
 import tkinter as tk
 import templates.ui as ui
-import test.view as test_view
+import result.view as result_view
 import shelve
 
-def main(user_id):
+def main():
 
     row = 0
     window = tk.Tk()
@@ -33,11 +33,10 @@ def main(user_id):
 
         _id     = lesson[0]
         name    = lesson[1]
-        command = lambda _id = _id : test_view.main(_id, user_id)
+        command = lambda _id = _id : result_view.main(_id, name)
 
-        if user_id not in test.results.keys():
-            ui.pair(centered_frame, label_text=name, button_text="Take Test", command=command, row=row)
-            row += 1
+        ui.pair(centered_frame, label_text=name, button_text="View Results", command=command, row=row)
+        row += 1
 
     ui.pair(centered_frame, label_text='', button_text="Close", command=window.destroy, row=row)
     row += 1

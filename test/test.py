@@ -1,6 +1,7 @@
 #Author: Thomas Sweetman
 
 import shelve
+import csv
 
 class Test:
 	"""
@@ -13,6 +14,7 @@ class Test:
 		self._id = testID
 		self.questions = []
 		self.results = {}
+		self.resultcsv = 'results/' + testID + '.csv'
 
 	def getStatus(self, studentID):
 		"""
@@ -29,7 +31,17 @@ class Test:
 		this method sets the result of a completed
 		test.
 		"""
+		print(self.results)
 		self.results[studentID] = mark
+		self.store()
+		with open(self.resultcsv, 'w', newline = '') as csvfile:
+			writer = csv.writer(csvfile, delimiter=',')
+			for _id in self.results.keys():
+				writer.writerow([_id, self.results[_id]])
+		csvfile.close()
+
+
+
 
 	def getResult(self, studentID):
 		"""
@@ -53,13 +65,10 @@ class Test:
 
 	def store(self):
 
-		print('store: '+ str(self.questions))
-		print('ID: ' + str(self._id))
-
 		try:
-			store = shelve.open('test_/store', 'w')
+			store = shelve.open('test/store', 'w')
 		except Exception:
-			store = shelve.open('test_/store', 'n')
+			store = shelve.open('test/store', 'n')
 
 		store[self._id] = self
 		store.close()

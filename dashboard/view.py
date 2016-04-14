@@ -4,6 +4,10 @@ import lesson_list.view as lesson_list_view
 import lesson_publish.view as lesson_publish_view
 import lesson_create.view as lesson_create_view
 import user.view as add_user_view
+import test_create.view as test_create_view
+import test_list.view as test_list_view
+import result.view as result_view
+import result_list.view as result_list_view
 import login
 from user.user import User
 
@@ -56,14 +60,23 @@ class Dashboard:
             row += 1
             tk.Button(self.root, text='Add User', command=add_user_view.main).grid(row=row)
             row += 1
+            tk.Button(self.root, text='Create Test', command=test_create_view.main).grid(row=row)
+            row += 1
+            tk.Button(self.root, text='View Results', command=result_list_view.main).grid(row=row)
+            row += 1
+
+
 
         tk.Button(self.root, text='View Lessons', command=lesson_list_view.main).grid(row=row)
+        row += 1
+
+        view_test_list = lambda user_id = self.user_id : test_list_view.main(user_id)
+        tk.Button(self.root, text='View Tests', command=view_test_list).grid(row=row)
         row += 1
         tk.Button(self.root, text='Logout', command=self.logout).grid(row=row)
         row += 1
         ui.margin_y(self.root, px=20, row=row)
         row += 1
-
 
 def main(user_id, login_status):
     window = tk.Tk()

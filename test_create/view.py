@@ -1,7 +1,7 @@
 #Author: Thomas Sweetman
 
 import tkinter as tk
-from test_.test import Test
+from test.test import Test
 from lesson.lesson import Lesson
 import shelve
 
@@ -16,9 +16,7 @@ class TestView:
 		self.questions = []
 		self.students = []
 		self.answer = [0, 0, 0, 0]
-		self.QI = 0
-
-		self.test = Test(self._id) 
+		self.QI = 0 
 
 		self.build()
 
@@ -33,8 +31,7 @@ class TestView:
 		store.close()
 
 		self._id2 = self._id.get()
-
-		print('save: ' + str(self.questions))
+		self.test = Test(self._id2)
 
 		for d, a in self.questions:
 			self.test.add(d, a)
@@ -69,8 +66,6 @@ class TestView:
 		self.answer2[1] = self.answer[1].get()
 		self.answer2[2] = self.answer[2].get()
 		self.answer2[3] = self.answer[3].get()
-		print('hello?: ' + str(self.description.get()))
-		print(str(self.detail2) + str(self.answer2))
 
 		self.questions.append((self.detail2, self.answer2))
 		self.QI += 1
