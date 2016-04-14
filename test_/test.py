@@ -12,7 +12,6 @@ class Test:
 	def __init__(self, testID):
 		self._id = testID
 		self.questions = []
-		self.students = []
 		self.results = {}
 
 	def getStatus(self, studentID):
