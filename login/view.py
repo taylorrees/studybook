@@ -3,6 +3,7 @@
 import tkinter as tk
 import templates.ui as ui
 import dashboard.view as dashboard
+from templates.message import Message
 from user.user import User
 
 class Login:
@@ -22,9 +23,12 @@ class Login:
             self.window.destroy()
             dashboard.main(self.user.user_id, login_status)
 
-        if login_status == 2:
+        elif login_status == 2:
             self.window.destroy()
             dashboard.main(self.user.user_id, login_status)
+
+        else:
+            Message("Incorrect Credentials")
 
 
     def build(self):
