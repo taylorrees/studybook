@@ -26,6 +26,7 @@ class TestView:
 			store = shelve.open('lesson/store')
 		except Exception:
 			print("no lessons to link")
+			return
 
 		lessons = [(lesson._id, lesson.name) for lesson in store.values() if lesson.published]
 		store.close()

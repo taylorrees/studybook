@@ -1,3 +1,5 @@
+#Authors: Thomas Sweetman + Taylor Rees
+
 import csv
 from templates.table import Table
 
